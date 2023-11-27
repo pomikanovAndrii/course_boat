@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление Техники</title>
+</head>
+<body>
+<h1>Додавання нової лодки</h1>
+<form method="post" action="/add-boat"  th:object="${boat}">
+  <label for="title">Название:</label>
+  <input type="text" id="title" name="title" th:field="*{title}" required><br>
+
+  <label for="rentPrice">Цена аренды:</label>
+  <input type="number" id="rentPrice" name="rentPrice" th:field="*{rentalPrice}" required><br>
+
+  <label for="purchasePrice">Цена ціна продажу:</label>
+  <input type="number" id="purchasePrice" name="purchasePrice" th:field="*{purchasePrice}" required><br>
+
+  <label for="seating">Вместимость:</label>
+  <input type="number" id="seating" name="seating" th:field="*{seating}" required><br>
+
+  <label for="speed">Максимальная скорость:</label>
+  <input type="number" id="speed" name="speed" th:field="*{speed}" required><br>
+
+  <label for="maxTransportedWeight">Максимальна допустима вага:</label>
+  <input type="number" id="maxTransportedWeight" name="maxTransportedWeight" th:field="*{maxTransportedWeight}" required><br>
+
+  <label for="imageURL">Посилання на зображення:</label>
+  <input type="text" id="imageURL" name="imageURL" th:field="*{imageURL}" required><br>
+
+  <label for="description">Описание:</label>
+  <textarea id="description" name="description" th:field="*{description}" required></textarea><br>
+
+  <input type="submit" value="Додати">
+</form>
+<a th:href="@{/catalog}">Назад до списку</a>
+</body>
+</html>

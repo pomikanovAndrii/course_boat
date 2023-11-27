@@ -2,21 +2,22 @@ package com.example.EasyProject.controller;
 
 import com.example.EasyProject.model.Boat;
 import com.example.EasyProject.repository.BoatRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class BoatController {
-    BoatRepository boatRepository = new BoatRepository();
+    @Autowired
+    private BoatRepository boatRepository;
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model){
-        Boat boat = boatRepository.findById(id);
+        Boat boat = boatRepository.findById(id).get();
         model.addAttribute("boat", boat);
         return "details";
     }
